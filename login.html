@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Entrar — Controle de Finanças</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <main class="login-container">
+    <h1>Entrar</h1>
+    <p class="login-subtitulo">Acesse seu controle de finanças</p>
+
+    <form id="form-login">
+      <label class="campo-oculto" for="usuario">Usuário</label>
+      <input id="usuario" type="text" placeholder="Usuário" required autocomplete="username" />
+
+      <label class="campo-oculto" for="senha">Senha</label>
+      <input id="senha" type="password" placeholder="Senha" required autocomplete="current-password" />
+
+      <p id="erro-login" class="erro-login" hidden></p>
+
+      <button type="submit" class="botaoForm">Entrar</button>
+    </form>
+
+    <p class="login-alt">
+      Não tem conta?
+      <button type="button" id="btn-cadastro" class="link-botao">Cadastre-se</button>
+    </p>
+  </main>
+
+  <script type="module" src="./telaLogin.js"></script>
+</body>
+
+</html>
