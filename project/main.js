@@ -5,7 +5,7 @@
 
 import DOM from "./dom.js";
 import { estaLogado } from "./auth.js";
-import { contaJaExiste, criarConta } from "./contas.js";
+import { contaJaExiste, criarConta } from "./contas/contas.js";
 
 import {
     criarLinhaConta,

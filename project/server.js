@@ -7,7 +7,7 @@ app.use(express.static("."));
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/cadastro.html");
+  res.sendFile(__dirname + "./cadastro.html");
 });
 
 app.post("/usuarios", (req, res) => {
@@ -34,7 +34,7 @@ app.post("/usuarios", (req, res) => {
   });
 });
 
-app.post("/login", (req, res) => {
+app.post("./login", (req, res) => {
     const { usuario, senha } = req.body;
 
     const sql = `
