@@ -26,4 +26,12 @@ form.addEventListener("submit", async (event) => {
     const dados = await resposta.json();
 
     console.log(dados);
+
+    if (!resposta.ok) {
+        console.log("Erro ao cadastrar:", dados.erro);
+        return;
+    }
+
+    // Cadastro realizado com sucesso
+    window.location.href = "./login.html";
 });
