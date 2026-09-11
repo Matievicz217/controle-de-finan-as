@@ -3,21 +3,22 @@ const db = require("./database");
 
 const app = express();
 
+app.use(express.static("."));
 app.use(express.json());
 
 app.get("/", (req, res) => {
-    res.json({ mensagem: "API do Controle Financeiro funcionando!" });
+    res.sendFile(__dirname + "/cadastro.html");
 });
 
 app.post("/usuarios", (req, res) => {
-    const { nome, email, senha } = req.body;
+    const { usuario, senha } = req.body;
 
     const sql = `
-        INSERT INTO usuarios (nome, email, senha_hash)
-        VALUES (?, ?, ?)
+        INSERT INTO usuarios (usuario, senha_hash)
+        VALUES (?, ?)
     `;
 
-    db.run(sql, [nome, email, senha], function (err) {
+    db.run(sql, [usuario, senha], function (err) {
         if (err) {
             return res.status(500).json({
                 erro: "Erro ao cadastrar usuário"
