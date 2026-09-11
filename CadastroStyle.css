@@ -1,0 +1,128 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@600;700&family=Inter:wght@400;500;600&display=swap");
+
+:root {
+  --cor-fundo: #f5f6f4;
+  --cor-superficie: #ffffff;
+  --cor-texto: #1b1f23;
+  --cor-texto-suave: #5a6560;
+  --cor-linha: #d8ddd9;
+  --cor-accent: #1f6f63;
+  --cor-accent-hover: #17564c;
+
+  --cor-atrasada-bg: #fbe2e0;
+  --cor-atrasada-texto: #b23327;
+
+  --fonte-titulo: "Source Serif 4", Georgia, serif;
+  --fonte-base: "Inter", system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 48px 24px;
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  font-family: var(--fonte-base);
+}
+
+.cadastro-container {
+  max-width: 360px;
+  margin: 96px auto;
+  padding: 32px;
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-linha);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.cadastro-container h1 {
+  font-family: var(--fonte-titulo);
+  font-size: 1.6rem;
+  margin: 0 0 4px;
+}
+
+.cadastro-subtitulo {
+  color: var(--cor-texto-suave);
+  font-size: 0.9rem;
+  margin: 0 0 24px;
+}
+
+.cadastro-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cadastro-container input {
+  font-family: var(--fonte-base);
+  font-size: 0.9rem;
+  color: var(--cor-texto);
+  background: var(--cor-fundo);
+  border: 1px solid var(--cor-linha);
+  border-radius: 6px;
+  padding: 10px 12px;
+}
+
+.cadastro-container input:focus {
+  outline: none;
+  border-color: var(--cor-accent);
+}
+
+.cadastro-container button[type="submit"] {
+  font-family: var(--fonte-base);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--cor-accent);
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 4px;
+  transition: background 0.15s ease;
+}
+
+.cadastro-container button[type="submit"]:hover {
+  background: var(--cor-accent-hover);
+}
+
+.cadastro-erro {
+  color: var(--cor-atrasada-texto);
+  background: var(--cor-atrasada-bg);
+  font-size: 0.85rem;
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin: 0;
+  text-align: left;
+}
+
+.cadastro-alt {
+  margin-top: 20px;
+  font-size: 0.85rem;
+  color: var(--cor-texto-suave);
+}
+
+.cadastro-alt a {
+  color: var(--cor-accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.cadastro-alt a:hover {
+  text-decoration: underline;
+}
+
+.campo-oculto {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Criar conta — Controle de Finanças</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <main class="login-container">
+    <h1>Criar conta</h1>
+    <p class="login-subtitulo">Cadastre-se para acessar seu controle de finanças</p>
+
+    <form id="form-cadastro">
+      <label class="campo-oculto" for="usuario">Usuário</label>
+      <input id="usuario" type="text" placeholder="Usuário" required autocomplete="username" />
+
+      <label class="campo-oculto" for="senha">Senha</label>
+      <input id="senha" type="password" placeholder="Senha" required autocomplete="new-password" minlength="4" />
+
+      <label class="campo-oculto" for="confirmar-senha">Confirmar senha</label>
+      <input id="confirmar-senha" type="password" placeholder="Confirmar senha" required autocomplete="new-password" />
+
+      <p id="erro-cadastro" class="erro-login" hidden></p>
+
+      <button type="submit" class="botaoForm">Criar conta</button>
+    </form>
+
+    <p class="login-alt">
+      Já tem conta?
+      <a href="./login.html" class="link-botao">entrar</a>
+    </p>
+  </main>
+
+  <script type="module" src="./js/cadastro.js"></script>
+</body>
+
+</html>
