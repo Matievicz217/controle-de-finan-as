@@ -1,37 +1,61 @@
 const form = document.querySelector("#form-cadastro");
+const erroCadastro = document.querySelector("#erro-cadastro");
 
 form.addEventListener("submit", async (event) => {
     event.preventDefault();
+
+    const botao = form.querySelector("button");
 
     const usuario = document.querySelector("#usuario").value;
     const senha = document.querySelector("#senha").value;
     const repeatSenha = document.querySelector("#confirmar-senha").value;
 
     if (senha !== repeatSenha) {
-        console.log("As senhas não são iguais.");
+        erroCadastro.textContent = "As senhas não são iguais.";
+        erroCadastro.hidden = false;
         return;
     }
 
-    const resposta = await fetch("/usuarios", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            usuario,
-            senha
-        })
-    });
+    // Inicia o carregamento
+    iniciarCarregamento(botao);
 
-    const dados = await resposta.json();
+    try {
+        const resposta = await fetch("/usuarios", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                usuario,
+                senha
+            })
+        });
 
-    console.log(dados);
+        const dados = await resposta.json();
 
-    if (!resposta.ok) {
-        console.log("Erro ao cadastrar:", dados.erro);
-        return;
+        console.log(dados);
+
+        if (!resposta.ok) {
+            erroCadastro.textContent = dados.erro;
+            erroCadastro.hidden = false;
+
+            pararCarregamento(botao);
+            return;
+        }
+
+        erroCadastro.hidden = true;
+
+        // Mantém a animação por 1 segundo
+        await new Promise(resolve => setTimeout(resolve, 1000));
+
+        window.location.href = "/login/login.html";
+
+    } catch (erro) {
+        console.error(erro);
+
+        erroCadastro.textContent = "Erro ao conectar com o servidor.";
+        erroCadastro.hidden = false;
+
+        pararCarregamento(botao);
     }
-
-    // Cadastro realizado com sucesso
-    window.location.href = "./login.html";
 });

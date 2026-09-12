@@ -5,40 +5,56 @@ const btnCadastro = document.querySelector("#btn-cadastro");
 form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
+    const botao = form.querySelector("button");
+
     const usuario = document.querySelector("#usuario").value;
     const senha = document.querySelector("#senha").value;
 
-    const resposta = await fetch("/login", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            usuario,
-            senha
-        })
-    });
+    iniciarCarregamento(botao);
 
-    const dados = await resposta.json();
+    try {
+        const resposta = await fetch("/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                usuario,
+                senha
+            })
+        });
 
-    console.log(dados);
+        const dados = await resposta.json();
 
-    if (!resposta.ok) {
-        erroLogin.textContent = dados.erro;
+        console.log(dados);
+
+        if (!resposta.ok) {
+            erroLogin.textContent = dados.erro;
+            erroLogin.hidden = false;
+
+            pararCarregamento(botao);
+            return;
+        }
+
+        localStorage.setItem("usuarioLogado", "true");
+
+        erroLogin.hidden = true;
+
+  
+        await new Promise(resolve => setTimeout(resolve, 1000));
+
+        window.location.href = "../contas/contas.html";
+
+    } catch (erro) {
+        console.error(erro);
+
+        erroLogin.textContent = "Erro ao conectar com o servidor.";
         erroLogin.hidden = false;
-        return;
+
+        pararCarregamento(botao);
     }
-
-    // Marca o usuário como logado
-    localStorage.setItem("usuarioLogado", "true");
-
-    erroLogin.hidden = true;
-
-    console.log("Login realizado com sucesso!");
-
-    window.location.href = "./contas.html";
 });
 
 btnCadastro.addEventListener("click", () => {
-    window.location.href = "./cadastro.html";
+    window.location.href = "/cadastro/cadastro.html";
 });

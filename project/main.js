@@ -17,7 +17,7 @@ import {
 
 // Verifica se o usuário está logado
 if (!estaLogado()) {
-    window.location.href = "login.html";
+    window.location.href = "/login/login.html";
 }
 
 // Guarda a linha da tabela em edição

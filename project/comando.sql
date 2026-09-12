@@ -39,3 +39,8 @@ CREATE TABLE contas (
 
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
 );
+
+SELECT * FROM usuarios;
+
+DELETE FROM usuarios
+WHERE id IN (2, 3, 4, 5, 6)
